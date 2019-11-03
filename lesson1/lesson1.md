@@ -73,13 +73,13 @@ This is a warning and not an error, so it won't break your app, but it's good pr
 import logo from "./logo.svg";
 ```
 
-### Styling
+## Styling
 
 Our React app is using **CSS modules** for styling. In `App.js` we are importing `App.css`. With CSS modules, imported CSS files are only applied to the component in which they are imported. We can set global styles in `index.css`.
 
 We aren't going to do much styling in this course and will rely mostly on Bootstrap for our styles.
 
-### JSX
+## JSX
 
 Above, we edited what was returned from our `App` component. This looked like HTML but is actually something called JSX. Under the hood it's all JavaScript, and is a way to mix variables and markup to build the output of our component.
 
@@ -101,7 +101,7 @@ function App() {
 
 We've moved the text "Noroff React" into a variable called `title`. Within our return statement we can output that variable by enclosing it in curly braces: `{}`.
 
-### Function components
+## Function components
 
 There are two kinds of React components: function and class components. As a general rule, use function components unless you have to use a class.
 
@@ -212,3 +212,77 @@ We can pass this in as the value for the title prop by using curly braces:
 ```
 
 Change the value of the title variable and watch the browser for updates to reinforce how we are passing data into the component we built.
+
+## Fragments
+
+A component can only return one parent tag. If, for example, you wanted to return two `p` tags, this would throw an error:
+
+```jsx
+return (
+    <p>First paragraph</p>
+    <p>First paragraph</p>
+)
+```
+
+You could place them in a parent `div` if it made styling sense:
+
+```jsx
+return (
+    <div className="paragraphs">
+        <p>First paragraph</p>
+        <p>First paragraph</p>
+    <div>
+)
+```
+
+but if you didn't need that extra div for any styling reasons, you could enclose the two `p` elements in `fragments`.
+
+Fragments look like empty tags: `<></>`
+
+```jsx
+return (
+    <>
+        <p>First paragraph</p>
+        <p>First paragraph</p>
+    <>
+)
+```
+
+---
+
+## Practice
+
+Practise creating components by building the following (we won't use your code going forward, this is only for practice):
+
+-   A `Subheading` component that receives a `title` prop and renders the prop's value inside an `h2` tag
+-   A `Paragraph` component that receives a `text` prop and renders it inside a `p` element
+-   A `Button` component that receives a `label` prop and renders it inside a `button` element
+-
+
+Create them in separate files inside the layout folder. Import and render them in `App.js`.
+
+```js
+import React from "react";
+import Heading from "./components/layout/Heading";
+import Subheading from "./components/layout/Subheading";
+import Paragraph from "./components/layout/Paragraph";
+import Button from "./components/layout/Button";
+import "./App.css";
+
+function App() {
+    const title = "Noroff React";
+
+    return (
+        <div className="App">
+            <Heading title={title} />
+            <Subheading title="This is a sub-heading" />
+            <Paragraph text="This is a paragraph" />
+            <Button label="This is a button" />
+        </div>
+    );
+}
+
+export default App;
+```
+
+---
