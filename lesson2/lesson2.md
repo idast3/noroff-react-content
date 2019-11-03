@@ -269,4 +269,63 @@ return (
 
 We are using the `map` method to return an array of `li` tags. The `key` attribute is important; you can remove it to see the warning ESLint will display about it being missing.
 
+Full code:
+
+```js
+export default function CharacterList() {
+    const [characters, setCharacters] = useState([]);
+
+    useEffect(() => {
+        fetch(BASE_URL)
+            .then(response => response.json())
+            .then(json => setCharacters(json.results))
+            .catch(error => console.log(error));
+    }, []);
+
+    return (
+        <ul>
+            {characters.map(c => (
+                <li key={c.id}>{c.name}</li>
+            ))}
+        </ul>
+    );
+}
+```
+
 Our home page now displays the first 20 names of the characters returned from the API. Because this call is paginated, we will only ever retrieve the first 20 items. We won't cover paginated calls in this guide.
+
+### Improving the UI
+
+Let's add a loading spinner while the API call runs. `react-bootstrap` provides one for us:
+
+```js
+import Spinner from "react-bootstrap/Spinner";
+```
+
+Add a second `useState` hook:
+
+```js
+const [loading, setLoading] = useState(true);
+```
+
+This gives us a `loading` property and a `setLoading` method to set that property. We're giving `loading` a default property of `true`.
+
+In the `useEffect` hook, add a finally method to set loading to `false`.
+
+```js
+.finally(() => setLoading(false));
+```
+
+This will run whether the call succeeds or fails - either way, loading is done.
+
+Above the first return statement, add a second that checks if the `loading` property is true and if so returns the `Spinner` component.
+
+```js
+if (loading) {
+    return <Spinner animation="border" className="spinner" />;
+}
+```
+
+You can find the props you can use to change the `Spinner`'s appearance in the [libary's docs](https://react-bootstrap.github.io/components/spinners/).
+
+If `loading` is not true, the `Spinner` won't return and our original return will run.
