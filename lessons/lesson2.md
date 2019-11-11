@@ -186,7 +186,7 @@ Create `src/components/characters/list/CharacterList.js`.
 `useState` and `useEffect` are the first hooks we'll use, so we need to import them from React. Also import the API URL.
 
 ```js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BASE_URL } from "../../../constants/API";
 ```
 
