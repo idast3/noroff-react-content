@@ -6,3 +6,4 @@
 
 [Lesson 3](lessons/lesson3.md)
 
+[Lesson 4](lessons/lesson4.md)

@@ -1,8 +1,8 @@
-## Adding the cards
+# Lesson 3 - Class components
 
 Time to add a card for each item.
 
-Add the following file and CSS to it: `src/components/characters/list/CharacterList.css;`
+Add the following file and CSS to it: `src/components/characters/list/CharacterList.css`
 
 ```css
 .card {
@@ -41,7 +41,7 @@ And import it in the `CharacterList` component.
 import "./CharacterList.css";
 ```
 
-We are going to create a new component for our card code. Add the following file and code to it: `src/components/characters/list/CharacterItem.js;`
+We are going to create a new component for our card code. Add the following file and code to it: `src/components/characters/list/CharacterItem.js`
 
 ```js
 import PropTypes from "prop-types";
@@ -66,7 +66,7 @@ function CharacterItem({ id, name, image }) {
 CharacterItem.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired
+    image: PropTypes.string.isRequired,
 };
 
 export default CharacterItem;
@@ -141,7 +141,11 @@ function CharacterItem({ id, name, image, history }) {
             <Card.Img variant="top" src={image} />
             <Card.Body>
                 <Card.Title>{name}</Card.Title>
-                <Button variant="secondary" block onClick={() => history.push(`/character/${id}`)}>
+                <Button
+                    variant="secondary"
+                    block
+                    onClick={() => history.push(`/character/${id}`)}
+                >
                     View
                 </Button>
             </Card.Body>
@@ -153,7 +157,7 @@ CharacterItem.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
-    history: PropTypes.object.isRequired
+    history: PropTypes.object.isRequired,
 };
 
 export default withRouter(CharacterItem);
@@ -175,7 +179,7 @@ import "./CharacterDetail.css";
 export default class CharacterDetailContainer extends Component {
     state = {
         details: null,
-        loading: true
+        loading: true,
     };
 
     componentDidMount() {
@@ -296,12 +300,12 @@ import "./CharacterDetail.css";
 
 export default class CharacterDetail extends Component {
     static propTypes = {
-        match: PropTypes.object.isRequired
+        match: PropTypes.object.isRequired,
     };
 
     state = {
         details: null,
-        loading: true
+        loading: true,
     };
 
     async componentDidMount() {
@@ -314,11 +318,11 @@ export default class CharacterDetail extends Component {
 
             this.setState({
                 details: json,
-                loading: false
+                loading: false,
             });
         } catch (error) {
             this.setState({
-                loading: false
+                loading: false,
             });
         }
     }
@@ -337,7 +341,7 @@ export default class CharacterDetail extends Component {
 
 We'll add a new component to display the image and details.
 
-Add the following file and CSS to it: `src/components/characters/detail/CharacterDetail.css;`
+Add the following file and CSS to it: `src/components/characters/detail/CharacterDetail.css`
 
 ```css
 .detail-image {
@@ -364,7 +368,7 @@ Add the following file and CSS to it: `src/components/characters/detail/Characte
 }
 ```
 
-Then create `src/components/characters/detail/CharacterDetail.js;` with the following code:
+Then create `src/components/characters/detail/CharacterDetail.js` with the following code:
 
 ```js
 import PropTypes from "prop-types";
@@ -389,7 +393,7 @@ export default function CharacterDetail({ details }) {
 }
 
 CharacterDetail.propTypes = {
-    details: PropTypes.object.isRequired
+    details: PropTypes.object.isRequired,
 };
 ```
 
@@ -413,7 +417,13 @@ Create the following: file `src/characters/detail/DetailList.js` and the code:
 import PropTypes from "prop-types";
 import ListGroup from "react-bootstrap/ListGroup";
 
-export default function DetailList({ gender, species, status, episodes, location }) {
+export default function DetailList({
+    gender,
+    species,
+    status,
+    episodes,
+    location,
+}) {
     const numberOfEpisodes = episodes.length;
 
     const { name: locationName } = location;
@@ -444,7 +454,7 @@ DetailList.propTypes = {
     species: PropTypes.string.isRequired,
     status: PropTypes.string.isRequired,
     episodes: PropTypes.array.isRequired,
-    location: PropTypes.object.isRequired
+    location: PropTypes.object.isRequired,
 };
 ```
 
@@ -471,14 +481,20 @@ export default function CharacterDetail({ details }) {
             </Col>
             <Col>
                 <h1>{name}</h1>
-                <DetailList gender={gender} species={species} status={status} episodes={episode} location={location} />
+                <DetailList
+                    gender={gender}
+                    species={species}
+                    status={status}
+                    episodes={episode}
+                    location={location}
+                />
             </Col>
         </Row>
     );
 }
 
 CharacterDetail.propTypes = {
-    details: PropTypes.object.isRequired
+    details: PropTypes.object.isRequired,
 };
 ```
 
@@ -486,7 +502,7 @@ CharacterDetail.propTypes = {
 
 ## Practice
 
--   Add more details to the `DetailList` component
+-   Add more details from the API call to the `DetailList` component.
 -   Create an `ErrorAlert` component which takes a single `message` prop. In `CharacterDetailContainer` check for the presence of an `error` property on the json result. If it exists display the `ErrorAlert` rather than the `CharacterDetail`. A missing or badly formed `id` in the URL will return an error.
 
 ---

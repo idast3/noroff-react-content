@@ -1,8 +1,8 @@
-# Filtering and breadcrumbs
+# Lesson 4 - Filtering results
 
 Let's filter the characters in the `CharacterList` component.
 
-First we need a search component: `src/components/characters/list/Search,js`.
+First we need a search component: `src/components/characters/list/Search.js`.
 
 ```js
 import PropTypes from "prop-types";
@@ -12,13 +12,16 @@ import FormControl from "react-bootstrap/FormControl";
 export default function Search({ handleSearch }) {
     return (
         <InputGroup className="search">
-            <FormControl placeholder="Search by name..." onChange={event => handleSearch(event)} />
+            <FormControl
+                placeholder="Search by name..."
+                onChange={event => handleSearch(event)}
+            />
         </InputGroup>
     );
 }
 
 Search.propTypes = {
-    handleSearch: PropTypes.func.isRequired
+    handleSearch: PropTypes.func.isRequired,
 };
 ```
 

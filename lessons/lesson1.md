@@ -1,4 +1,4 @@
-## Installation
+# Lesson 1 - React fundamentals
 
 We're going to use Create React App to create a new app. Run the following in your terminal or command line:
 
@@ -55,9 +55,9 @@ This DOM element is found in `public/index.html`.
 
 ![App Structure](/images/1-app-structure.png)
 
-### Eslint
+### ESlint
 
-`create-react app` has included [ESlint](https://create-react-app.dev/docs/setting-up-your-editor) for us. This will give us feedback on our code in the browser console, the terminal/command line where we started the app, or directly in our editor if we install a plugin. If you are using VSCode you can install its [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
+`create-react-app` has included [ESlint](https://create-react-app.dev/docs/setting-up-your-editor) for us. This will give us feedback on our code in the browser console, the terminal/command line where we started the app, or directly in our editor if we install a plugin. If you are using VSCode you can install its [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
 
 _Always_ check the ESlint output if you run into any errors.
 
@@ -75,7 +75,7 @@ import logo from "./logo.svg";
 
 ## Styling
 
-Our React app is using **CSS modules** for styling. In `App.js` we are importing `App.css`. With CSS modules, imported CSS files are only applied to the component in which they are imported. We can set global styles in `index.css`.
+Our React app is using **CSS modules** for styling. This is the default way to handle styling in an app created with `Create React App`. In `App.js` we are importing `App.css`. With CSS modules, imported CSS files are only applied to the component in which they are imported. We can set global styles in `index.css`.
 
 We aren't going to do much styling in this course and will rely mostly on Bootstrap for our styles.
 
@@ -123,7 +123,7 @@ function Heading(props) {}
 
 ```js
 const props = {
-    title: "Hello"
+    title: "Hello",
 };
 ```
 

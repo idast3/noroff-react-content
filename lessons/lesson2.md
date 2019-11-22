@@ -1,4 +1,4 @@
-## Bootstrap components
+# Lesson 2 - Bootstrap, routing and API calls
 
 The best thing about React components is that they are reusable. Once written, we can simply import them and use them. We can also import components written by other developers.
 
@@ -13,7 +13,10 @@ npm i react-bootstrap
 In the `public/index.html` add a link to the latest Boostrap CDN CSS file, just as you would for a non-React site.
 
 ```html
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+<link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+/>
 ```
 
 The first component we want to use from React Bootstrap is the [Navbar](https://react-bootstrap.github.io/components/navbar/).
@@ -109,7 +112,12 @@ Now we can write code to navigate between these components.
 In `Layout.js` import the following:
 
 ```js
-import { BrowserRouter as Router, Switch, Route, NavLink } from "react-router-dom";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    NavLink,
+} from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Home from "../home/Home";
 import About from "../about/About";
